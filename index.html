@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vag® — 2026 Goals</title>
+<link rel="stylesheet" href="https://use.typekit.net/zoz7hlv.css" />
+<style>
+  :root{
+    --ink:#000000; --carbon:#1b1b1c; --paper:#ffffff; --parchment:#f2f2f2;
+    --ash:#d8d8d8; --slate:#717476; --graphite:#4d5153; --smoke:#848484;
+    --fog:#c8cacd; --pewter:#666666;
+    --disp:'obviously-variable', ui-sans-serif, system-ui, sans-serif;
+    --sans:Arial, Helvetica, sans-serif;
+    --label:Arial, Helvetica, sans-serif;
+    --max:1280px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--parchment); color:var(--ink);
+    font-family:var(--sans); font-weight:500; font-size:17px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 38px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:24px 38px; max-width:var(--max); margin:0 auto;
+  }
+  .brand{font-family:var(--sans); font-weight:500; font-size:18px; letter-spacing:.01em;}
+  .brand sup{font-size:.55em; vertical-align:super;}
+  .nav-right{display:flex; align-items:center; gap:24px;}
+  .nav-date{color:var(--slate); font-size:14px;}
+
+  /* ---------- BUTTONS ---------- */
+  .pill{
+    font-family:var(--sans); font-weight:500; font-size:15px;
+    border-radius:9999px; padding:13px 24px; cursor:pointer;
+    border:1px solid var(--ink); background:transparent; color:var(--ink);
+    transition:background .15s, color .15s;
+  }
+  .pill:hover{background:var(--ink); color:var(--paper);}
+  .pill.solid{background:var(--carbon); color:var(--paper); border-color:var(--carbon);}
+  .pill.solid:hover{background:#000;}
+  .pill.sm{padding:8px 16px; font-size:14px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:48px 0 58px;}
+  .hero h1{
+    font-family:var(--disp); font-weight:250; line-height:.95;
+    font-size:clamp(88px, 18vw, 248px); letter-spacing:-.02em;
+  }
+  .hero h1 sup{font-size:.24em; vertical-align:super; top:-.1em;}
+  .hero-top{position:relative;}
+  .hero .lede{
+    position:absolute; right:0; bottom:.28em;
+    max-width:380px; color:var(--graphite);
+    font-size:18px; line-height:1.6; text-align:left;
+    border-left:1px solid var(--fog); padding-left:28px;
+  }
+  @media (max-width:1024px){
+    .hero .lede{max-width:280px;}
+  }
+  @media (max-width:640px){
+    .hero .lede{max-width:220px; font-size:15px; padding-left:16px;}
+  }
+
+  /* ---------- OVERALL SUMMARY ---------- */
+  .overall{
+    display:flex; flex-wrap:wrap; align-items:flex-end; gap:48px;
+    border-top:1px solid var(--ash); border-bottom:1px solid var(--ash);
+    padding:38px 0; margin-top:96px;
+  }
+  .overall .big{font-family:var(--disp); font-weight:300; font-size:61px; line-height:1;}
+  .overall .big small{font-size:.35em; color:var(--slate); vertical-align:baseline; margin-left:6px;}
+  .overall .lbl{font-family:var(--label); font-size:12px; color:var(--slate); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;}
+  .overall .stat{min-width:120px;}
+  .overall .stat .num{font-family:var(--disp); font-weight:300; font-size:61px; line-height:1;}
+
+  /* ---------- TABS ---------- */
+  .tabs{
+    display:flex; gap:10px; margin-top:38px; flex-wrap:wrap;
+    border-bottom:1px solid var(--ash); padding-bottom:0;
+  }
+  .tab{
+    font-family:var(--sans); font-weight:500; font-size:16px; cursor:pointer;
+    background:transparent; border:none; color:var(--slate);
+    padding:16px 4px; margin-right:32px; position:relative;
+    transition:color .15s;
+  }
+  .tab:hover{color:var(--ink);}
+  .tab.active{color:var(--ink);}
+  .tab.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--ink);
+  }
+  .tab .count{color:var(--smoke); font-size:13px; margin-left:8px;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  section.block{padding:58px 0;}
+  .sec-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    flex-wrap:wrap; gap:16px; margin-bottom:48px;
+  }
+  .sec-head h2{font-family:var(--disp); font-weight:500; font-size:clamp(40px,6vw,61px); line-height:1.1; letter-spacing:-.01em;}
+  .sec-head .meta{color:var(--slate); font-size:15px;}
+
+  /* ---------- OBJECTIVE GRID ---------- */
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .card{
+    background:var(--paper); padding:29px; cursor:pointer;
+    display:flex; flex-direction:column; min-height:300px;
+    transition:transform .15s;
+  }
+  .card:hover{transform:translateY(-3px);}
+  .card:hover .card-open{color:var(--ink);}
+  .card .card-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .card .obj-num{
+    font-family:var(--label); font-weight:400; font-size:12px;
+    color:var(--smoke); letter-spacing:.08em; text-transform:uppercase;
+  }
+  .card .card-tag-r{
+    font-family:var(--label); font-weight:700; font-style:italic; font-size:12px;
+    color:var(--slate); letter-spacing:.08em; text-transform:uppercase; text-align:right;
+  }
+  .card .tag{
+    display:inline-block; font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--slate); border:1px solid var(--ash); border-radius:9999px;
+    padding:5px 14px; margin:12px 0 16px;
+  }
+  .card h3{font-family:var(--disp); font-weight:500; font-size:34px; line-height:1.05; letter-spacing:-.01em;}
+  .card .statement{color:var(--graphite); font-size:15px; line-height:1.55; margin-top:16px;}
+  .card .card-foot{margin-top:auto; padding-top:24px;}
+  .card .card-open{
+    font-size:14px; color:var(--slate); margin-top:14px;
+    display:flex; align-items:center; gap:8px; transition:color .15s;
+  }
+  .card .krmeta{font-size:13px; color:var(--smoke); margin-top:8px;}
+
+  .card-progress{display:flex; align-items:center; gap:12px; margin:0 0 8px;}
+  .card-progress .pct{font-family:var(--disp); font-weight:500; font-size:25px; min-width:64px;}
+  .bar{flex:1; height:6px; background:var(--ash); border-radius:9999px; overflow:hidden;}
+  .bar > span{display:block; height:100%; background:var(--ink); width:0; transition:width .35s ease;}
+
+  /* ---------- KEY RESULTS ---------- */
+  .kr-title{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--smoke); margin:24px 0 14px;}
+  .kr{padding:14px 0; border-top:1px solid var(--parchment);}
+  .kr:first-of-type{border-top:none;}
+  .kr .kr-label{font-size:15px; line-height:1.45; display:flex; gap:10px; align-items:flex-start;}
+  .kr .kr-controls{display:flex; align-items:center; gap:12px; margin-top:12px;}
+  .mini-bar{flex:1; height:4px; background:var(--ash); border-radius:9999px; overflow:hidden;}
+  .mini-bar > span{display:block; height:100%; background:var(--ink); width:0; transition:width .3s;}
+  .kr-val{font-size:14px; color:var(--slate); min-width:58px; text-align:right; font-variant-numeric:tabular-nums;}
+  .stepper{display:flex; align-items:center; gap:8px;}
+  .step-btn{
+    width:28px; height:28px; border-radius:9999px; border:1px solid var(--ink);
+    background:transparent; color:var(--ink); cursor:pointer; font-size:16px; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step-btn:hover{background:var(--ink); color:var(--paper);}
+  .step-btn:disabled{border-color:var(--fog); color:var(--fog); cursor:not-allowed; background:transparent;}
+  input[type=range]{flex:1; accent-color:#000; height:4px;}
+  /* milestone toggle */
+  .toggle{
+    width:26px; height:26px; border:1px solid var(--ink); border-radius:9999px;
+    flex:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:15px; color:transparent; background:transparent; transition:background .15s;
+  }
+  .toggle.on{background:var(--ink); color:var(--paper);}
+  .kr.done .kr-label{color:var(--slate);}
+
+  /* ---- SIMPLE CHECKLIST ROW ---- */
+  .kr.check{display:flex; gap:12px; align-items:flex-start; cursor:pointer; padding:14px 0;}
+  .kr.check .check-label{flex:1; font-size:16px; line-height:1.45;}
+  .kr.check.done .check-label{color:var(--slate); text-decoration:line-through; text-decoration-color:var(--fog);}
+  .kr.check .toggle{flex:none; margin-top:1px;}
+  .kr.check:hover .toggle{border-color:var(--ink);}
+
+  /* ---- UPDATES ---- */
+  .note-empty{color:var(--slate); font-size:14px; padding:6px 0;}
+
+  /* ---- MANUAL PROGRESS ---- */
+  .manual-row{display:flex; align-items:center; gap:12px; margin-top:4px;}
+  .manual-row input[type=range]{flex:1; accent-color:#000; height:4px;}
+  .manual-hint{font-size:13px; color:var(--slate); margin-top:8px;}
+
+  /* ---- KR ACTIVITY / NOTES ---- */
+  .kr-notes{margin:14px 0 4px; padding-left:20px;}
+  .note{
+    display:flex; align-items:flex-start; gap:10px; justify-content:space-between;
+    padding:7px 0; border-top:1px solid var(--parchment); font-size:14px; line-height:1.45;
+  }
+  .note:first-child{border-top:none;}
+  .note .note-txt{flex:1; color:var(--graphite);}
+  .note .note-txt::before{content:'—'; color:var(--smoke); margin-right:8px;}
+  .note .note-del{background:none; border:none; color:var(--fog); cursor:pointer; font-size:15px; line-height:1; padding:0 2px;}
+  .note .note-del:hover{color:var(--ink);}
+  .note-add{display:flex; gap:8px; margin-top:10px;}
+  .note-add input{
+    flex:1; font-family:var(--sans); font-size:14px; color:var(--ink);
+    border:1px solid var(--fog); border-radius:0; padding:9px 12px; background:var(--paper);
+  }
+  .note-add input:focus{outline:none; border-color:var(--ink);}
+  .note-add .note-btn{
+    font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+    border:1px solid var(--ink); background:transparent; color:var(--ink);
+    border-radius:9999px; padding:0 16px; cursor:pointer;
+  }
+  .note-add .note-btn:hover{background:var(--ink); color:var(--paper);}
+  .kr-notes-title{font-family:var(--label); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--smoke); margin:14px 0 8px;}
+
+  /* ---------- WEEKLY WINS ---------- */
+  .win-form{background:var(--paper); padding:29px; margin-bottom:38px; display:grid; gap:16px;}
+  .win-form textarea, .win-form select{
+    font-family:var(--sans); font-weight:500; font-size:16px; color:var(--ink);
+    border:1px solid var(--fog); border-radius:0; padding:14px 16px; background:var(--paper);
+    width:100%; resize:vertical;
+  }
+  .win-form textarea{min-height:80px;}
+  .win-form textarea:focus, .win-form select:focus{outline:none; border-color:var(--ink);}
+  .win-form .row{display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+  .win-form label{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate);}
+  .win-form select{max-width:280px;}
+
+  .week-nav{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:38px; flex-wrap:wrap;}
+  .week-nav-label{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate);}
+  .pill:disabled{border-color:var(--fog); color:var(--fog); cursor:not-allowed; background:transparent;}
+  .pill:disabled:hover{background:transparent; color:var(--fog);}
+  .week-group{margin-bottom:48px;}
+  .week-label{
+    font-family:var(--disp); font-weight:500; font-size:25px; margin-bottom:4px;
+    padding-bottom:12px; border-bottom:1px solid var(--ink);
+  }
+  .week-sub{font-family:var(--label); font-size:12px; color:var(--slate); margin-bottom:20px; text-transform:uppercase; letter-spacing:.08em;}
+  .win{
+    background:var(--paper); padding:20px 24px; margin-bottom:12px;
+    display:flex; gap:20px; align-items:flex-start; justify-content:space-between;
+  }
+  .win .win-body{flex:1;}
+  .win .win-tag{display:inline-block; font-family:var(--label); font-style:italic; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:6px;}
+  .win .win-text{font-size:16px; line-height:1.5;}
+  .win .win-meta{display:flex; align-items:center; gap:14px; flex:none;}
+  .win .win-date{font-size:13px; color:var(--smoke); white-space:nowrap;}
+  .win .del{background:none; border:none; color:var(--smoke); cursor:pointer; font-size:18px; line-height:1; padding:2px 6px;}
+  .win .del:hover{color:var(--ink);}
+  .empty{color:var(--slate); font-size:16px; padding:24px 0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--carbon); color:var(--paper); margin-top:77px;}
+  footer .wrap{padding:58px 38px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  footer .fbrand{font-family:var(--sans); font-weight:500; font-size:20px;}
+  footer .fbrand sup{font-size:.55em; vertical-align:super;}
+  footer .flinks{display:flex; gap:24px; font-size:14px;}
+  footer a, footer button.link{color:var(--paper); text-decoration:underline; background:none; border:none; font-family:var(--sans); font-weight:500; font-size:14px; cursor:pointer;}
+  footer .fnote{color:var(--smoke); font-size:13px; width:100%;}
+
+  /* ---------- MODAL ---------- */
+  .modal-bg{
+    position:fixed; inset:0; background:rgba(27,27,28,.55); display:none;
+    align-items:flex-start; justify-content:center; z-index:50; padding:48px 24px; overflow:auto;
+  }
+  .modal-bg.open{display:flex;}
+  .modal{background:var(--paper); max-width:720px; width:100%; padding:38px;}
+  #objModal .modal{max-width:820px; padding:48px;}
+  .modal h3{font-family:var(--disp); font-weight:500; font-size:34px; margin-bottom:8px;}
+  .modal .modal-sub{color:var(--slate); font-size:15px; margin-bottom:24px;}
+  .modal pre{
+    font-family:var(--sans); font-weight:500; font-size:14px; line-height:1.6; color:var(--ink);
+    white-space:pre-wrap; background:var(--parchment); padding:24px; margin-bottom:24px;
+    max-height:44vh; overflow:auto;
+  }
+  .modal .modal-actions{display:flex; gap:12px; flex-wrap:wrap;}
+
+  /* ---------- SHARE DOCUMENT ---------- */
+  .share-modal{max-width:900px; padding:0;}
+  .share-toggle{display:flex; gap:8px; padding:32px 48px 0;}
+  .share-toggle button{
+    font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    border:1px solid var(--ash); background:transparent; color:var(--slate);
+    border-radius:9999px; padding:9px 18px; cursor:pointer;
+  }
+  .share-toggle button.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  #shareDoc{padding:32px 48px 8px;}
+  .share-actions{padding:8px 48px 36px;}
+
+  .doc-eyebrow{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate);}
+  .doc-title{font-family:var(--disp); font-weight:300; font-size:54px; line-height:1; letter-spacing:-.02em; margin:8px 0 4px;}
+  .doc-meta{color:var(--slate); font-size:14px; margin-bottom:36px;}
+
+  /* overview — parchment band */
+  .doc-overview{display:flex; align-items:flex-end; gap:52px; flex-wrap:wrap;
+    background:var(--parchment); padding:30px 34px; margin-bottom:44px;}
+  .doc-hero{font-family:var(--disp); font-weight:300; font-size:61px; line-height:1;}
+  .doc-hero small{font-size:.35em; color:var(--slate); vertical-align:baseline; margin-left:6px;}
+  .doc-stat .k{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:8px;}
+  .doc-stat .v{font-family:var(--disp); font-weight:300; font-size:61px; line-height:1;}
+
+  /* section heading with trailing rule for scannability */
+  .doc-h{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--smoke);
+    margin:44px 0 22px; display:flex; align-items:center; gap:16px;}
+  .doc-h::after{content:''; flex:1; height:1px; background:var(--ash);}
+
+  /* progress bar chart — monochrome, single-series magnitude */
+  .chart{display:flex; flex-direction:column; gap:22px; margin-bottom:8px;}
+  .chart-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:9px;}
+  .chart-label{font-size:15px; color:var(--ink);}
+  .chart-label .n{color:var(--smoke); margin-right:10px;}
+  .chart-val{font-family:var(--disp); font-weight:400; font-size:20px; font-variant-numeric:tabular-nums;}
+  .chart-track{height:12px; background:var(--ash); border-radius:9999px; overflow:hidden;}
+  .chart-fill{height:100%; background:var(--ink); border-radius:9999px; min-width:2px;}
+
+  /* objective detail panels (parchment cards) */
+  .doc-objs{display:flex; flex-direction:column; gap:18px;}
+  .doc-obj{background:var(--parchment); padding:30px 34px; page-break-inside:avoid;}
+  .doc-obj-head{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:16px;}
+  .doc-obj-eyebrow{font-family:var(--label); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:8px;}
+  .doc-obj-eyebrow .tg{font-style:italic;}
+  .doc-obj-title{font-family:var(--disp); font-weight:500; font-size:27px; line-height:1.05;}
+  .doc-obj-pct{font-family:var(--disp); font-weight:300; font-size:48px; line-height:.85; white-space:nowrap;}
+  .doc-obj-bar{height:8px; background:var(--ash); border-radius:9999px; overflow:hidden; margin-bottom:22px;}
+  .doc-obj-bar > span{display:block; height:100%; background:var(--ink); border-radius:9999px; min-width:2px;}
+  .doc-list{list-style:none; margin:0;}
+  .doc-list li{font-size:15px; line-height:1.5; color:var(--graphite); padding:6px 0; display:flex; gap:14px; align-items:flex-start;}
+  .doc-list li.done{color:var(--ink);}
+  .doc-list li .mk{color:var(--ink); flex:none; width:14px; text-align:center; font-variant-numeric:tabular-nums;}
+  .doc-list li.off .mk{color:var(--smoke);}
+  .doc-block{margin-top:20px; padding-top:18px; border-top:1px solid var(--ash);}
+  .doc-sub{font-family:var(--label); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin:0 0 10px;}
+
+  /* wins panels */
+  .doc-win{background:var(--parchment); padding:20px 26px; margin-bottom:12px; page-break-inside:avoid;}
+  .doc-win .t{font-family:var(--label); font-size:12px; font-style:italic; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:6px;}
+  .doc-win .x{font-size:16px; line-height:1.5; color:var(--ink);}
+  .doc-empty{color:var(--slate); font-size:15px; padding:16px 0;}
+  .share-weeknav{display:flex; align-items:center; gap:16px; margin-bottom:28px;}
+  .share-weeknav .lbl{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .grid{grid-template-columns:1fr;}
+    .wrap, nav{padding-left:24px; padding-right:24px;}
+    .overall{gap:32px;}
+  }
+
+  /* ---------- LOCK SCREEN ---------- */
+  .lock{
+    position:fixed; inset:0; z-index:100; background:var(--parchment);
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .lock-box{width:100%; max-width:360px; text-align:center;}
+  .lock-brand{font-family:var(--sans); font-weight:500; font-size:18px; color:var(--ink);}
+  .lock-brand sup{font-size:.55em; vertical-align:super;}
+  .lock-title{font-family:var(--disp); font-weight:300; font-size:61px; line-height:1; margin:24px 0 8px; letter-spacing:-.02em;}
+  .lock-sub{font-family:var(--label); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:32px;}
+  .lock form{display:flex; flex-direction:column; gap:12px;}
+  .lock input{
+    font-family:var(--sans); font-weight:500; font-size:16px; color:var(--ink); text-align:center;
+    border:1px solid var(--fog); border-radius:0; padding:15px 16px; background:var(--paper);
+  }
+  .lock input:focus{outline:none; border-color:var(--ink);}
+  .lock .pill{width:100%;}
+  .lock-err{color:var(--slate); font-size:13px; margin-top:14px; min-height:18px;}
+
+  /* ---------- PRINT (only the share document) ---------- */
+  @media print{
+    @page{ margin:16mm 14mm; }
+    body{background:#fff;}
+    body > *:not(#shareModal){ display:none !important; }
+    #shareModal{ position:static; display:block !important; background:#fff; padding:0; margin:0; overflow:visible; }
+    #shareModal .modal{ max-width:100%; width:100%; padding:0; }
+    #shareDoc{ padding:0; }
+    .no-print{ display:none !important; }
+    /* print backgrounds & fills exactly as on screen (parchment panels, ink bars) */
+    #shareModal, #shareModal *{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+    .doc-obj, .doc-win, .chart-top, .doc-overview{ page-break-inside:avoid; }
+    .doc-title{ font-size:44px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lock" id="lock">
+  <div class="lock-box">
+    <div class="lock-brand">Vag<sup>®</sup></div>
+    <div class="lock-title">2026 Goals</div>
+    <div class="lock-sub">Enter password to continue</div>
+    <form onsubmit="return tryUnlock(event)">
+      <input type="password" id="pw" placeholder="Password" autocomplete="current-password" autofocus />
+      <button class="pill solid" type="submit">Enter</button>
+    </form>
+    <div class="lock-err" id="pwErr"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="brand">Vag<sup>®</sup></div>
+  <div class="nav-right">
+    <span class="nav-date" id="navDate"></span>
+    <button class="pill solid" onclick="openShare()">Share update</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <h1>2026 Goals<sup>®</sup></h1>
+      <p class="lede">A living record of my 2026 objectives and the weekly wins that move them forward.</p>
+    </div>
+
+    <div class="overall">
+      <div>
+        <div class="lbl">Overall progress</div>
+        <div class="big" id="overallPct">0<small>%</small></div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Objectives</div>
+        <div class="num">3</div>
+      </div>
+      <div class="stat">
+        <div class="lbl">Key results</div>
+        <div class="num" id="krCount">0</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="objectives" onclick="showTab('objectives')">Objectives</button>
+    <button class="tab" data-tab="wins" onclick="showTab('wins')">Weekly Wins<span class="count" id="tabWinCount"></span></button>
+  </div>
+
+  <section class="block tab-panel active" id="objectives">
+    <div class="sec-head">
+      <h2>The Objectives</h2>
+      <span class="meta">Update key results as you progress — everything saves automatically</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="block tab-panel" id="wins">
+    <div class="sec-head">
+      <h2>Weekly Wins</h2>
+      <span class="meta">Small, concrete steps — grouped by week, newest first</span>
+    </div>
+
+    <div class="win-form">
+      <div>
+        <label for="winText">This week I…</label>
+        <textarea id="winText" placeholder="e.g. Ran a knowledge-sharing session with the team"></textarea>
+      </div>
+      <div class="row">
+        <div>
+          <label for="winObj">Objective</label><br/>
+          <select id="winObj"></select>
+        </div>
+        <div>
+          <label for="winDate">Date</label><br/>
+          <input type="date" id="winDate" style="font-family:var(--sans);font-weight:500;font-size:16px;border:1px solid var(--fog);padding:13px 16px;" />
+        </div>
+        <button class="pill solid" style="margin-top:18px" onclick="addWin()">Log win</button>
+      </div>
+    </div>
+
+    <div id="winList"></div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Vag<sup>®</sup> — 2026 Goals</div>
+    <div class="flinks">
+      <button class="link" onclick="showTab('objectives')">Objectives</button>
+      <button class="link" onclick="showTab('wins')">Weekly wins</button>
+      <button class="link" onclick="openShare()">Share update</button>
+      <button class="link" onclick="resetAll()">Reset</button>
+    </div>
+    <div class="fnote">Track your goals, log weekly wins, and share a clean update. Data is stored privately in this browser.</div>
+  </div>
+</footer>
+
+<!-- OBJECTIVE DETAIL MODAL -->
+<div class="modal-bg" id="objModal">
+  <div class="modal" id="objModalInner"></div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-bg" id="shareModal">
+  <div class="modal share-modal">
+    <div class="share-toggle no-print">
+      <button data-mode="goals" class="active" onclick="setShareMode('goals')">Goals progress</button>
+      <button data-mode="wins" onclick="setShareMode('wins')">Weekly wins</button>
+    </div>
+    <div id="shareDoc"></div>
+    <div class="modal-actions share-actions no-print">
+      <button class="pill solid" onclick="copyShare(event)">Copy as text</button>
+      <button class="pill" onclick="window.print()">Print / PDF</button>
+      <button class="pill" onclick="closeShare()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG  —  edit this block to make the dashboard your own
+   ------------------------------------------------------------
+   owner    : your name (shown in the header and the shared report)
+   year     : the goal year
+   password : leave '' for no password, or set a word to lock the page
+              (this is light privacy for a shared file, not real security)
+   goals    : your objectives. For each, set a short `tag`, a `title`,
+              a one-line `statement`, and a list of `topics` to check off.
+   Everything you track is saved in THIS browser (localStorage) only.
+   ============================================================ */
+const CONFIG = {
+  owner: 'Your Name',
+  year: '2026',
+  password: '',
+  goals: [
+    {
+      tag: 'Growth',
+      title: 'Skills & Learning',
+      statement: 'Level up my core skills this year through focused, deliberate practice.',
+      topics: [
+        'Complete an online course in my field',
+        'Read 6 books related to my work',
+        'Earn one professional certification',
+      ],
+    },
+    {
+      tag: 'Delivery',
+      title: 'Impact at Work',
+      statement: 'Ship meaningful work and make the way I work more efficient.',
+      topics: [
+        'Lead 3 key projects to completion',
+        'Improve one recurring process or workflow',
+        'Document a process so others can reuse it',
+      ],
+    },
+    {
+      tag: 'People',
+      title: 'Team & Community',
+      statement: 'Grow with others - share knowledge and support the people around me.',
+      topics: [
+        'Mentor a teammate or peer',
+        'Run 2 knowledge-sharing sessions',
+        'Give a talk or write an article',
+      ],
+    },
+  ],
+};
+
+// Build the internal structure from CONFIG (supports simple `topics` or advanced `groups`).
+const GOALS = CONFIG.goals.map(function(g, i){
+  const id = g.id || ('obj' + (i + 1));
+  const groups = g.groups || [{ name: '', krs: (g.topics || []).map(function(t, j){ return { id: id + '-' + j, label: t }; }) }];
+  return { id: id, num: String(i + 1).padStart(2, '0'), tag: g.tag, title: g.title, statement: g.statement || '', groups: groups };
+});
+
+/* ============================================================
+   PASSWORD GATE (optional, client-side) + LOCAL STORAGE
+   ============================================================ */
+function showLockErr(msg){
+  document.getElementById('pwErr').textContent = msg;
+  const pw=document.getElementById('pw'); if(pw){ pw.value=''; pw.focus(); }
+}
+function unlockUI(){ document.getElementById('lock').style.display='none'; }
+function tryUnlock(e){
+  e.preventDefault();
+  const v = document.getElementById('pw').value;
+  if(v === CONFIG.password){
+    try{ sessionStorage.setItem('goals_unlocked','1'); }catch(err){}
+    unlockUI();
+  } else { showLockErr('Incorrect password. Try again.'); }
+  return false;
+}
+function initLock(){
+  if(!CONFIG.password){ unlockUI(); return; }
+  let ok=false; try{ ok = sessionStorage.getItem('goals_unlocked')==='1'; }catch(e){}
+  if(ok){ unlockUI(); } else { const el=document.getElementById('pw'); if(el) el.focus(); }
+}
+
+const STORE_KEY = 'goalsDashboard_' + (CONFIG.owner||'me').replace(/[^a-z0-9]/gi,'').toLowerCase();
+let state = load();
+
+/* ---- TABS ---- */
+function showTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active', p.id===id));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===id));
+  try{ localStorage.setItem(STORE_KEY+'_tab', id); }catch(e){}
+}
+
+function normalize(s){
+  s = s || {};
+  s.kr = s.kr || {};
+  s.wins = s.wins || [];
+  s.updates = s.updates || {};
+  s.nextSteps = s.nextSteps || {};
+  s.manual = s.manual || {};   // objId -> manual progress 0..100 (overrides checklist)
+  return s;
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){ return normalize(JSON.parse(raw)); }
+  }catch(e){}
+  return { kr:{}, wins:[], updates:{}, nextSteps:{}, manual:{} };
+}
+function saveLocal(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+function save(){ saveLocal(); }
+
+/* ---- KR helpers (simple checklist) ---- */
+function krDone(kr){ return !!state.kr[kr.id]; }
+function hasManual(goal){ return state.manual[goal.id] != null; }
+function objRatio(goal){
+  if(hasManual(goal)) return Math.max(0, Math.min(1, state.manual[goal.id]/100));
+  const all = goal.groups.flatMap(g=>g.krs);
+  if(!all.length) return 0;
+  return all.filter(krDone).length / all.length;
+}
+function objItemCount(goal){ return goal.groups.flatMap(g=>g.krs).length; }
+function objDoneCount(goal){ return goal.groups.flatMap(g=>g.krs).filter(krDone).length; }
+function overallRatio(){
+  return GOALS.reduce((s,g)=>s+objRatio(g),0)/GOALS.length;
+}
+function allKRs(){ return GOALS.flatMap(g=>g.groups.flatMap(gr=>gr.krs)); }
+
+/* ---- KR mutation ---- */
+function toggleKR(kr){ state.kr[kr.id] = !state.kr[kr.id]; save(); render(); }
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function pct(r){ return Math.round(r*100); }
+
+function render(){
+  // overall
+  document.getElementById('overallPct').innerHTML = pct(overallRatio()) + '<small>%</small>';
+  document.getElementById('krCount').textContent = allKRs().length;
+  document.getElementById('tabWinCount').textContent = state.wins.length ? state.wins.length : '';
+
+  renderGrid();
+  renderWins();
+  if(openObjId) renderObjModal();
+}
+
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = GOALS.map(goal=>{
+    const r = objRatio(goal);
+    const total = objItemCount(goal);
+    const doneCount = objDoneCount(goal);
+    return `
+      <div class="card" onclick="openObjective('${goal.id}')">
+        <div class="card-head">
+          <span class="obj-num">OBJECTIVE ${goal.num}</span>
+          <span class="card-tag-r">${goal.tag}</span>
+        </div>
+        <h3>${goal.title}</h3>
+        <div class="card-foot">
+          <div class="card-progress">
+            <span class="pct">${pct(r)}%</span>
+            <span class="bar"><span style="width:${pct(r)}%"></span></span>
+          </div>
+          <div class="krmeta">${doneCount} of ${total} topics complete</div>
+          <div class="card-open">View details &rarr;</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* ---- OBJECTIVE DETAIL MODAL ---- */
+let openObjId = null;
+function openObjective(id){
+  openObjId = id;
+  renderObjModal();
+  document.getElementById('objModal').classList.add('open');
+}
+function closeObjective(){
+  openObjId = null;
+  document.getElementById('objModal').classList.remove('open');
+}
+function renderObjModal(){
+  if(!openObjId) return;
+  const goal = GOALS.find(g=>g.id===openObjId);
+  const r = objRatio(goal);
+  const groupsHtml = goal.groups.map(g=>`
+    ${g.name?'<div class=\"kr-title\">'+g.name+'</div>':''}
+    ${g.krs.map(kr=>krHtml(kr)).join('')}
+  `).join('');
+  document.getElementById('objModalInner').innerHTML = `
+    <div class="obj-num" style="color:var(--smoke)">OBJECTIVE ${goal.num}</div>
+    <span class="tag" style="display:inline-block;font-family:var(--label);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);border:1px solid var(--ash);border-radius:9999px;padding:5px 14px;margin:12px 0 14px;">${goal.tag}</span>
+    <h3>${goal.title}</h3>
+    <p class="statement" style="color:var(--graphite);font-size:16px;line-height:1.55;margin-top:16px;padding-bottom:22px;border-bottom:1px solid var(--ash);">${goal.statement}</p>
+    <div class="card-progress" style="margin:24px 0 6px;">
+      <span class="pct">${pct(r)}%</span>
+      <span class="bar"><span style="width:${pct(r)}%"></span></span>
+    </div>
+    <div class="manual-row">
+      <input type="range" min="0" max="100" value="${pct(r)}"
+        oninput="this.nextElementSibling.textContent=this.value+'%'"
+        onchange="setManual('${goal.id}', this.value)" />
+      <span class="kr-val">${pct(r)}%</span>
+      ${hasManual(goal) ? `<button class="note-btn" onclick="clearManual('${goal.id}')" title="Go back to checklist-based progress">Auto</button>` : ''}
+    </div>
+    <div class="manual-hint">${hasManual(goal)
+      ? 'Manual progress set — this overrides the checklist below. Click “Auto” to track by checked topics.'
+      : 'Drag to set progress manually, or check topics below to track automatically.'}</div>
+    ${groupsHtml}
+    <div style="border-top:1px solid var(--ash); margin-top:32px; padding-top:8px;">
+      ${updatesHtml(goal.id)}
+    </div>
+    <div style="border-top:1px solid var(--ash); margin-top:32px; padding-top:8px;">
+      ${nextStepsHtml(goal.id)}
+    </div>
+    <div class="modal-actions" style="margin-top:32px;">
+      <button class="pill" onclick="closeObjective()">Close</button>
+    </div>`;
+}
+document.getElementById('objModal').addEventListener('click',e=>{ if(e.target.id==='objModal') closeObjective(); });
+
+function krHtml(kr){
+  const done = krDone(kr);
+  return `
+    <div class="kr check ${done?'done':''}" onclick="toggleKR(GET('${kr.id}'))">
+      <span class="toggle ${done?'on':''}">&#10003;</span>
+      <span class="check-label">${kr.label}</span>
+    </div>`;
+}
+
+// lookup helper used by inline handlers
+function GET(id){ return allKRs().find(k=>k.id===id); }
+
+/* ---- MANUAL PROGRESS ---- */
+function setManual(objId,val){ state.manual[objId] = Math.max(0,Math.min(100,Number(val)||0)); save(); render(); }
+function clearManual(objId){ delete state.manual[objId]; save(); render(); }
+
+/* ---- OBJECTIVE UPDATES (running log, no date) ---- */
+function objUpdates(id){ return state.updates[id] || []; }
+function updatesHtml(objId){
+  const ups = objUpdates(objId);
+  const list = ups.length ? ups.map(u=>`
+    <div class="note">
+      <span class="note-txt">${escapeHtml(u.text)}</span>
+      <button class="note-del" onclick="delUpdate('${objId}','${u.id}')" title="Remove">&times;</button>
+    </div>`).join('') : '<div class="note-empty">No updates yet.</div>';
+  return `
+    <div class="kr-title">My updates</div>
+    ${list}
+    <div class="note-add">
+      <input id="upd-${objId}" placeholder="Add an update — what did you do?"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();addUpdate('${objId}');}" />
+      <button class="note-btn" onclick="addUpdate('${objId}')">Add</button>
+    </div>`;
+}
+function addUpdate(objId){
+  const el = document.getElementById('upd-'+objId);
+  const txt = (el.value||'').trim();
+  if(!txt) return;
+  state.updates[objId] = state.updates[objId] || [];
+  state.updates[objId].push({ id:'u'+Date.now()+Math.floor(Math.random()*1000), text:txt });
+  save(); render();
+  const again = document.getElementById('upd-'+objId);
+  if(again) again.focus();
+}
+function delUpdate(objId,uid){
+  state.updates[objId] = (state.updates[objId]||[]).filter(u=>u.id!==uid);
+  save(); render();
+}
+
+/* ---- NEXT STEPS (to-do list per objective) ---- */
+function objSteps(id){ return state.nextSteps[id] || []; }
+function nextStepsHtml(objId){
+  const steps = objSteps(objId);
+  const list = steps.length ? steps.map(s=>`
+    <div class="note">
+      <span class="note-txt">${escapeHtml(s.text)}</span>
+      <button class="note-del" onclick="delStep('${objId}','${s.id}')" title="Remove">&times;</button>
+    </div>`).join('') : '<div class="note-empty">Nothing planned yet.</div>';
+  return `
+    <div class="kr-title">Next steps</div>
+    ${list}
+    <div class="note-add">
+      <input id="step-${objId}" placeholder="Add a next step — what's coming up?"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();addStep('${objId}');}" />
+      <button class="note-btn" onclick="addStep('${objId}')">Add</button>
+    </div>`;
+}
+function addStep(objId){
+  const el = document.getElementById('step-'+objId);
+  const txt = (el.value||'').trim();
+  if(!txt) return;
+  state.nextSteps[objId] = state.nextSteps[objId] || [];
+  state.nextSteps[objId].push({ id:'s'+Date.now()+Math.floor(Math.random()*1000), text:txt });
+  save(); render();
+  const again = document.getElementById('step-'+objId);
+  if(again) again.focus();
+}
+function delStep(objId,sid){
+  state.nextSteps[objId] = (state.nextSteps[objId]||[]).filter(s=>s.id!==sid);
+  save(); render();
+}
+
+/* ---- WINS ---- */
+function objName(id){ const g=GOALS.find(x=>x.id===id); return g? g.tag+' — '+g.title : 'General'; }
+function objTag(id){ const g=GOALS.find(x=>x.id===id); return g? g.tag : 'General'; }
+
+function weekKey(dateStr){
+  const d = new Date(dateStr+'T00:00:00');
+  const day = d.getDay(); // 0 Sun
+  const monday = new Date(d);
+  const diff = (day===0? -6 : 1-day);
+  monday.setDate(d.getDate()+diff);
+  return monday.toISOString().slice(0,10);
+}
+function fmtWeek(mondayStr){
+  const start = new Date(mondayStr+'T00:00:00');
+  const end = new Date(start); end.setDate(start.getDate()+6);
+  const opt={month:'short', day:'numeric'};
+  return 'Week of '+start.toLocaleDateString('en-US',opt)+' – '+end.toLocaleDateString('en-US',opt);
+}
+function fmtDate(dateStr){
+  return new Date(dateStr+'T00:00:00').toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric'});
+}
+
+let winViewWeek = null; // monday string of the week being viewed
+function goWeek(k){ winViewWeek = k; renderWins(); }
+
+function renderWins(){
+  const list = document.getElementById('winList');
+
+  // group all wins by week
+  const groups = {};
+  state.wins.forEach(w=>{ const k=weekKey(w.date); (groups[k]=groups[k]||[]).push(w); });
+  const curWk = weekKey(todayStr());
+  if(!groups[curWk]) groups[curWk] = [];           // current week always navigable
+  const weeks = Object.keys(groups).sort((a,b)=>b.localeCompare(a)); // newest first
+
+  // resolve which week we're viewing
+  let wk = (winViewWeek && groups[winViewWeek]) ? winViewWeek : curWk;
+  if(!groups[wk]) wk = weeks[0];
+  const idx = weeks.indexOf(wk);
+  const olderWk = weeks[idx+1];   // further back in time
+  const newerWk = weeks[idx-1];   // more recent
+
+  const wins = groups[wk].sort((a,b)=> b.date.localeCompare(a.date) || b.ts-a.ts);
+
+  const nav = `
+    <div class="week-nav">
+      <button class="pill sm" ${olderWk?`onclick="goWeek('${olderWk}')"`:'disabled'}>&larr; Previous week</button>
+      <span class="week-nav-label">Week ${weeks.length-idx} of ${weeks.length}</span>
+      <button class="pill sm" ${newerWk?`onclick="goWeek('${newerWk}')"`:'disabled'}>Next week &rarr;</button>
+    </div>`;
+
+  const body = wins.length ? `
+    <div class="week-group">
+      <div class="week-label">${fmtWeek(wk)}</div>
+      <div class="week-sub">${wins.length} win${wins.length>1?'s':''}</div>
+      ${wins.map(w=>`
+        <div class="win">
+          <div class="win-body">
+            <span class="win-tag">${objTag(w.obj)}</span>
+            <div class="win-text">${escapeHtml(w.text)}</div>
+          </div>
+          <div class="win-meta">
+            <span class="win-date">${fmtDate(w.date)}</span>
+            <button class="del" onclick="delWin('${w.id}')" title="Delete">&times;</button>
+          </div>
+        </div>`).join('')}
+    </div>`
+    : `<div class="week-group">
+         <div class="week-label">${fmtWeek(wk)}</div>
+         <p class="empty">No wins logged this week${wk===curWk?' yet — add your first one above.':'.'}</p>
+       </div>`;
+
+  list.innerHTML = nav + body;
+}
+
+function escapeHtml(s){ return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function addWin(){
+  const text = document.getElementById('winText').value.trim();
+  const obj = document.getElementById('winObj').value;
+  const date = document.getElementById('winDate').value || todayStr();
+  if(!text){ document.getElementById('winText').focus(); return; }
+  state.wins.push({ id:'w'+Date.now()+Math.floor(Math.random()*1000), text, obj, date, ts:Date.now() });
+  save();
+  document.getElementById('winText').value='';
+  winViewWeek = weekKey(date);   // jump to the week of the win just added
+  render();
+}
+function delWin(id){
+  state.wins = state.wins.filter(w=>w.id!==id);
+  save(); render();
+}
+
+/* ============================================================
+   SHARE — a formatted document, choose Goals progress or Weekly wins
+   ============================================================ */
+let shareMode = 'goals';       // 'goals' | 'wins'
+let shareWeek = null;          // monday string for wins mode
+function fmtToday(){ return new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
+function winsFor(wk){
+  return state.wins.filter(w=>weekKey(w.date)===wk).sort((a,b)=> b.date.localeCompare(a.date) || b.ts-a.ts);
+}
+function currentWeekWins(){ return winsFor(weekKey(todayStr())); }
+
+/* ---------- GOALS DOCUMENT ---------- */
+function buildGoalsDocHtml(){
+  const overall = pct(overallRatio());
+  const doneItems = GOALS.reduce((s,g)=>s+objDoneCount(g),0);
+  const totalItems = GOALS.reduce((s,g)=>s+objItemCount(g),0);
+
+  const bars = GOALS.map(g=>{
+    const p = pct(objRatio(g));
+    return `<div>
+      <div class="chart-top">
+        <span class="chart-label"><span class="n">${g.num}</span>${g.tag} — ${g.title}</span>
+        <span class="chart-val">${p}%</span>
+      </div>
+      <div class="chart-track"><div class="chart-fill" style="width:${p}%"></div></div>
+    </div>`;
+  }).join('');
+
+  const objs = GOALS.map(g=>{
+    const p = pct(objRatio(g));
+    const krs = g.groups.flatMap(gr=>gr.krs);
+    const checklist = krs.map(kr=>`<li class="${krDone(kr)?'done':'off'}"><span class="mk">${krDone(kr)?'✓':'○'}</span><span>${kr.label}</span></li>`).join('');
+    const steps = objSteps(g.id);
+    const ups = objUpdates(g.id);
+    const upsHtml = ups.length ? `<div class="doc-block"><div class="doc-sub">Updates</div><ul class="doc-list">${ups.map(u=>`<li><span class="mk">•</span><span>${escapeHtml(u.text)}</span></li>`).join('')}</ul></div>` : '';
+    const stepsHtml = steps.length ? `<div class="doc-block"><div class="doc-sub">Next steps</div><ul class="doc-list">${steps.map(s=>`<li><span class="mk">→</span><span>${escapeHtml(s.text)}</span></li>`).join('')}</ul></div>` : '';
+    return `<div class="doc-obj">
+      <div class="doc-obj-head">
+        <div>
+          <div class="doc-obj-eyebrow">Objective ${g.num} · <span class="tg">${g.tag}</span></div>
+          <div class="doc-obj-title">${g.title}</div>
+        </div>
+        <div class="doc-obj-pct">${p}%</div>
+      </div>
+      <div class="doc-obj-bar"><span style="width:${p}%"></span></div>
+      <ul class="doc-list">${checklist}</ul>
+      ${upsHtml}${stepsHtml}
+    </div>`;
+  }).join('');
+
+  return `
+    <div class="doc-eyebrow">${CONFIG.owner} · ${CONFIG.year} Goals</div>
+    <div class="doc-title">Progress update</div>
+    <div class="doc-meta">${fmtToday()}</div>
+    <div class="doc-overview">
+      <div class="doc-stat"><div class="k">Overall progress</div><div class="doc-hero">${overall}<small>%</small></div></div>
+      <div class="doc-stat"><div class="k">Objectives</div><div class="v">${GOALS.length}</div></div>
+      <div class="doc-stat"><div class="k">Topics done</div><div class="v">${doneItems}/${totalItems}</div></div>
+    </div>
+    <div class="doc-h">Progress by objective</div>
+    <div class="chart">${bars}</div>
+    <div class="doc-h">Detail</div>
+    <div class="doc-objs">${objs}</div>`;
+}
+
+/* ---------- WEEKLY WINS DOCUMENT ---------- */
+function buildWinsDocHtml(){
+  const groups={}; state.wins.forEach(w=>{const k=weekKey(w.date);(groups[k]=groups[k]||[]).push(w);});
+  const curWk=weekKey(todayStr());
+  if(!groups[curWk]) groups[curWk]=[];
+  const weeks=Object.keys(groups).sort((a,b)=>b.localeCompare(a));
+  let wk=(shareWeek && groups[shareWeek])?shareWeek:curWk;
+  const idx=weeks.indexOf(wk);
+  const olderWk=weeks[idx+1], newerWk=weeks[idx-1];
+  const wins=(groups[wk]||[]).sort((a,b)=> b.date.localeCompare(a.date) || b.ts-a.ts);
+
+  const cats = GOALS.map(g=>({label:g.tag, count:wins.filter(w=>w.obj===g.id).length}));
+  const genCount = wins.filter(w=>!GOALS.find(g=>g.id===w.obj)).length;
+  if(genCount) cats.push({label:'General', count:genCount});
+  const maxc = Math.max(1, ...cats.map(c=>c.count));
+  const chart = wins.length ? `<div class="doc-h">Wins by objective</div><div class="chart">${cats.map(c=>`
+    <div><div class="chart-top"><span class="chart-label">${c.label}</span><span class="chart-val">${c.count}</span></div>
+    <div class="chart-track"><div class="chart-fill" style="width:${Math.round(c.count/maxc*100)}%"></div></div></div>`).join('')}</div>` : '';
+
+  const list = wins.length ? wins.map(w=>`<div class="doc-win"><div class="t">${objTag(w.obj)}</div><div class="x">${escapeHtml(w.text)}</div></div>`).join('')
+    : '<div class="doc-empty">No wins logged for this week.</div>';
+
+  return `
+    <div class="doc-eyebrow">${CONFIG.owner} · ${CONFIG.year} Goals</div>
+    <div class="doc-title">Weekly wins</div>
+    <div class="doc-meta">${fmtWeek(wk)}</div>
+    <div class="share-weeknav no-print">
+      <button class="pill sm" ${olderWk?`onclick="shareGoWeek('${olderWk}')"`:'disabled'}>&larr; Previous</button>
+      <span class="lbl">Week ${weeks.length-idx} of ${weeks.length}</span>
+      <button class="pill sm" ${newerWk?`onclick="shareGoWeek('${newerWk}')"`:'disabled'}>Next &rarr;</button>
+    </div>
+    <div class="doc-overview">
+      <div class="doc-stat"><div class="k">Wins this week</div><div class="doc-hero">${wins.length}</div></div>
+      <div class="doc-stat"><div class="k">Objectives touched</div><div class="v">${cats.filter(c=>c.count>0).length}</div></div>
+    </div>
+    ${chart}
+    <div class="doc-h">The wins</div>
+    ${list}`;
+}
+
+function renderShareDoc(){
+  document.getElementById('shareDoc').innerHTML = shareMode==='wins' ? buildWinsDocHtml() : buildGoalsDocHtml();
+  document.querySelectorAll('.share-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.mode===shareMode));
+}
+function setShareMode(m){ shareMode=m; if(m==='wins' && !shareWeek) shareWeek=weekKey(todayStr()); renderShareDoc(); }
+function shareGoWeek(k){ shareWeek=k; renderShareDoc(); }
+
+/* ---------- TEXT versions (for Copy) ---------- */
+function buildGoalsText(){
+  const L=[];
+  L.push(CONFIG.owner.toUpperCase()+' · '+CONFIG.year+' GOALS — PROGRESS UPDATE');
+  L.push(fmtToday());
+  L.push('');
+  L.push('OVERALL PROGRESS: '+pct(overallRatio())+'%');
+  L.push('─'.repeat(44));
+  GOALS.forEach(g=>{
+    L.push('');
+    L.push(g.num+' · '+g.tag+' — '+g.title+'  ['+pct(objRatio(g))+'%]');
+    g.groups.forEach(gr=> gr.krs.forEach(kr=> L.push('   '+(krDone(kr)?'[x]':'[ ]')+' '+kr.label)));
+    const ups=objUpdates(g.id);
+    if(ups.length){ L.push('   Updates:'); ups.forEach(u=> L.push('     • '+u.text)); }
+    const steps=objSteps(g.id);
+    if(steps.length){ L.push('   Next steps:'); steps.forEach(s=> L.push('     → '+s.text)); }
+  });
+  return L.join('\n');
+}
+function buildWinsText(){
+  const wk=(shareWeek)||weekKey(todayStr());
+  const wins=winsFor(wk);
+  const L=[];
+  L.push(CONFIG.owner.toUpperCase()+' · '+CONFIG.year+' GOALS — WEEKLY WINS');
+  L.push(fmtWeek(wk));
+  L.push('─'.repeat(44));
+  if(wins.length){ wins.forEach(w=> L.push('   • ['+objTag(w.obj)+'] '+w.text)); }
+  else { L.push('   (no wins logged for this week)'); }
+  return L.join('\n');
+}
+function buildShareText(){ return shareMode==='wins' ? buildWinsText() : buildGoalsText(); }
+
+function openShare(){
+  shareMode='goals'; shareWeek=weekKey(todayStr());
+  renderShareDoc();
+  document.getElementById('shareModal').classList.add('open');
+}
+function closeShare(){ document.getElementById('shareModal').classList.remove('open'); }
+function copyShare(e){
+  const t=buildShareText();
+  const btn = e && e.target;
+  navigator.clipboard.writeText(t).then(()=>{
+    if(btn){ const old=btn.textContent; btn.textContent='Copied ✓'; setTimeout(()=>btn.textContent=old,1600); }
+  });
+}
+document.getElementById('shareModal').addEventListener('click',e=>{ if(e.target.id==='shareModal') closeShare(); });
+
+function resetAll(){
+  if(confirm('Reset all progress, wins, next steps and updates? This clears the cloud copy too.')){
+    state = normalize({}); save(); render();
+  }
+}
+
+/* ---- init ---- */
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function init(){
+  document.title = CONFIG.owner + ' — ' + CONFIG.year + ' Goals';
+  var _b=document.querySelector('.brand'); if(_b) _b.textContent = CONFIG.owner;
+  var _h=document.querySelector('.hero h1'); if(_h) _h.textContent = CONFIG.year + ' Goals';
+  var _lt=document.querySelector('.lock-title'); if(_lt) _lt.textContent = CONFIG.year + ' Goals';
+  var _lb=document.querySelector('.lock-brand'); if(_lb) _lb.textContent = CONFIG.owner;
+  document.getElementById('navDate').textContent =
+    new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('winObj').innerHTML =
+    GOALS.map(g=>`<option value="${g.id}">${g.tag} — ${g.title}</option>`).join('') +
+    '<option value="general">General</option>';
+  document.getElementById('winDate').value = todayStr();
+  render();
+  try{ const t=localStorage.getItem(STORE_KEY+'_tab'); if(t) showTab(t); }catch(e){}
+  initLock();
+}
+init();
+</script>
+</body>
+</html>
